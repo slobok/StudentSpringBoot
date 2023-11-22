@@ -4,14 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
 
 //Service layer giving data back to api layer,to student controller
-//@Component Moze komponent ali er je ovo servis bolje service
+//@Component.Moze component ali  je ovo servis bolje service
 @Service
 public class StudentService {
     private final StudentRepository studentRepository;
@@ -28,7 +27,7 @@ public class StudentService {
     public void addNewStudent(Student student){
         Optional<Student> studentOptional =  this.studentRepository.findStudentByEmail(student.getEmail());
         if (studentOptional.isPresent()){
-            throw  new IllegalStateException("Email taken");
+            throw new IllegalStateException("Email taken");
         }
         studentRepository.save(student);
     }
